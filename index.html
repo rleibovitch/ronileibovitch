@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Roni Leibovitch — author, artist, photographer, and creative technologist. My technology attempts to save attention, and my art attempts to contain it." />
+  <title>Roni Leibovitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  <a href="#canvas" class="skip-link">Skip to content</a>
+
+  <!-- Sensory controls — always reachable -->
+  <aside class="sensory-panel" aria-label="Sensory preferences">
+    <button type="button" class="sensory-btn" id="toggle-motion" aria-pressed="false" title="Reduce motion">
+      <span class="sensory-icon" aria-hidden="true">◐</span>
+      <span class="sensory-label">Calm motion</span>
+    </button>
+    <button type="button" class="sensory-btn" id="toggle-contrast" aria-pressed="false" title="Soft contrast">
+      <span class="sensory-icon" aria-hidden="true">◑</span>
+      <span class="sensory-label">Soft palette</span>
+    </button>
+    <button type="button" class="sensory-btn" id="toggle-focus" aria-pressed="false" title="Focus mode">
+      <span class="sensory-icon" aria-hidden="true">◎</span>
+      <span class="sensory-label">Focus</span>
+    </button>
+  </aside>
+
+  <!-- Non-linear constellation nav -->
+  <nav class="constellation-nav" aria-label="Site navigation">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-nodes">
+      <span class="nav-toggle-text">Navigate</span>
+      <span class="nav-toggle-hint">any direction</span>
+    </button>
+    <ul class="nav-nodes" id="nav-nodes" hidden>
+      <li><button type="button" data-target="zone-origin" class="nav-node nav-node--coral">Origin</button></li>
+      <li><button type="button" data-target="zone-bio" class="nav-node nav-node--teal">Bio</button></li>
+      <li><button type="button" data-target="zone-gallery" class="nav-node nav-node--yellow">Trails</button></li>
+      <li><button type="button" data-target="zone-writing" class="nav-node nav-node--navy">Writing</button></li>
+      <li><button type="button" data-target="zone-apps" class="nav-node nav-node--coral">Apps</button></li>
+      <li><button type="button" data-target="zone-art" class="nav-node nav-node--teal">Art</button></li>
+    </ul>
+  </nav>
+
+  <!-- Spatial canvas — content lives in zones, not rows -->
+  <main id="canvas" class="canvas" tabindex="-1">
+    <div class="canvas-viewport" id="viewport">
+      <div class="canvas-world" id="world">
+
+        <!-- ORIGIN ZONE -->
+        <section class="zone zone-origin" id="zone-origin" data-zone="origin">
+          <div class="zone-marker" aria-hidden="true">01</div>
+          <header class="kinetic-header">
+            <h1 class="kinetic-title kinetic-title--solo" aria-label="Roni Leibovitch">
+              <span class="kinetic-char">R</span><span class="kinetic-char">o</span><span class="kinetic-char">n</span><span class="kinetic-char">i</span>
+            </h1>
+            <p class="kinetic-subtitle async-reveal" data-delay="800">
+              <span class="role-tag">author</span>
+              <span class="role-sep">·</span>
+              <span class="role-tag">artist</span>
+              <span class="role-sep">·</span>
+              <span class="role-tag">photographer</span>
+              <span class="role-sep">·</span>
+              <span class="role-tag">creative technologist</span>
+            </p>
+          </header>
+          <p class="origin-invite async-reveal" data-delay="1400">
+            This is not a scroll. It is a saunter.<br />
+            Drag anywhere · click nodes · wander.
+          </p>
+          <div class="origin-compass async-reveal" data-delay="2000" aria-hidden="true">
+            <span class="compass-arm compass-n">↑</span>
+            <span class="compass-arm compass-e">→</span>
+            <span class="compass-arm compass-s">↓</span>
+            <span class="compass-arm compass-w">←</span>
+            <span class="compass-center">◎</span>
+          </div>
+        </section>
+
+        <!-- BIO ZONE — diagonal placement -->
+        <section class="zone zone-bio" id="zone-bio" data-zone="bio">
+          <div class="zone-marker" aria-hidden="true">02</div>
+          <h2 class="zone-title async-story" data-story="bio">
+            <span class="story-fragment">In</span>
+            <span class="story-fragment">his</span>
+            <span class="story-fragment">own</span>
+            <span class="story-fragment">words</span>
+          </h2>
+          <blockquote class="bio-quote">
+            <p class="quote-line async-reveal" data-delay="0">"My technology attempts to <em>save</em> attention,</p>
+            <p class="quote-line async-reveal" data-delay="600">and my art attempts to <em>contain</em> it."</p>
+            <footer class="quote-attrib async-reveal" data-delay="1200">— Roni Leibovitch</footer>
+          </blockquote>
+          <p class="bio-body async-reveal" data-delay="1800">
+            Roni is a multi-disciplinary artist, author, and creative technologist
+            working at the intersection of attention, nature, and code.
+          </p>
+        </section>
+
+        <!-- GALLERY ZONE -->
+        <section class="zone zone-gallery" id="zone-gallery" data-zone="gallery">
+          <div class="zone-marker" aria-hidden="true">03</div>
+          <h2 class="zone-title zone-title--vertical">
+            <span class="vertical-text">Sauntering</span>
+          </h2>
+          <div class="gallery-card">
+            <div class="gallery-frame">
+              <div class="gallery-slides" id="gallery-slides">
+                <div class="gallery-slide gallery-slide--active" style="--hue: 145">
+                  <div class="slide-placeholder" aria-hidden="true">
+                    <svg viewBox="0 0 400 300" class="nature-svg">
+                      <rect fill="var(--teal)" width="400" height="300"/>
+                      <path fill="var(--yellow)" d="M0 200 Q100 120 200 180 T400 140 L400 300 L0 300Z"/>
+                      <circle cx="320" cy="60" r="40" fill="var(--coral)" opacity="0.7"/>
+                      <text x="200" y="160" text-anchor="middle" fill="var(--navy)" font-family="IBM Plex Mono" font-size="14">Michigan trails</text>
+                    </svg>
+                  </div>
+                </div>
+                <div class="gallery-slide" style="--hue: 200">
+                  <div class="slide-placeholder" aria-hidden="true">
+                    <svg viewBox="0 0 400 300" class="nature-svg">
+                      <rect fill="var(--navy)" width="400" height="300"/>
+                      <ellipse cx="200" cy="250" rx="180" ry="40" fill="var(--teal)" opacity="0.5"/>
+                      <path fill="var(--cream)" d="M80 250 L120 100 L160 250 M200 250 L240 80 L280 250 M320 250 L350 130 L380 250" stroke="var(--yellow)" stroke-width="3" fill="none"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="gallery-slide" style="--hue: 30">
+                  <div class="slide-placeholder" aria-hidden="true">
+                    <svg viewBox="0 0 400 300" class="nature-svg">
+                      <rect fill="var(--yellow)" width="400" height="300"/>
+                      <rect x="50" y="180" width="300" height="8" fill="var(--navy)"/>
+                      <circle cx="100" cy="100" r="50" fill="var(--coral)" opacity="0.6"/>
+                      <circle cx="300" cy="80" r="30" fill="var(--teal)"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h3 class="gallery-title kinetic-wobble">Along Michigan Nature Trails</h3>
+              <p class="gallery-desc">A photographic saunter through Michigan's wild edges — light, bark, water, pause.</p>
+              <a href="https://500px.com/p/leibovitch/galleries/sauntering-along-michigan-nature-trails" 
+                 class="brutal-link brutal-link--external" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                View on 500px →
+              </a>
+              <div class="gallery-controls">
+                <button type="button" class="gallery-btn" id="gallery-prev" aria-label="Previous image">←</button>
+                <span class="gallery-counter" id="gallery-counter">1 / 3</span>
+                <button type="button" class="gallery-btn" id="gallery-next" aria-label="Next image">→</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WRITING ZONE — Substack -->
+        <section class="zone zone-writing" id="zone-writing" data-zone="writing">
+          <div class="zone-marker" aria-hidden="true">04</div>
+          <article class="writing-card">
+            <div class="writing-badge async-reveal" data-delay="0">Substack</div>
+            <h2 class="writing-title">
+              <span class="kinetic-word" data-word="am">Am</span>
+              <span class="kinetic-word" data-word="i">I</span>
+              <span class="kinetic-word" data-word="talking">Talking</span>
+              <span class="kinetic-word" data-word="now">Now?</span>
+            </h2>
+            <p class="writing-teaser async-reveal" data-delay="400">
+              Essays on attention, speech, silence, and the strange choreography of being heard.
+            </p>
+            <div class="writing-fragments">
+              <p class="fragment async-reveal" data-delay="800">"When do words begin?"</p>
+              <p class="fragment async-reveal" data-delay="1200">"Who is listening?"</p>
+              <p class="fragment async-reveal" data-delay="1600">"Am I talking now?"</p>
+            </div>
+            <a href="https://amitalkingnow.substack.com/" 
+               class="brutal-link brutal-link--large" 
+               target="_blank" 
+               rel="noopener noreferrer">
+              Read on Substack →
+            </a>
+          </article>
+        </section>
+
+        <!-- APPS ZONE — Creative Technologist -->
+        <section class="zone zone-apps" id="zone-apps" data-zone="apps">
+          <div class="zone-marker" aria-hidden="true">05</div>
+          <h2 class="zone-title">Creative<br />Technologist</h2>
+          <p class="apps-intro async-reveal" data-delay="0">Mobile apps designed to protect attention.</p>
+          
+          <div class="app-cards">
+            <article class="app-card app-card--tick" data-app="tick-talk">
+              <div class="app-icon" aria-hidden="true">
+                <span class="app-icon-inner">⏱</span>
+              </div>
+              <h3 class="app-name">Tick Talk</h3>
+              <p class="app-desc">Time made visible. A gentle clock for conversations that need room to breathe.</p>
+              <div class="app-tags">
+                <span class="tag">iOS</span>
+                <span class="tag">attention</span>
+              </div>
+            </article>
+
+            <article class="app-card app-card--bench" data-app="quiet-bench">
+              <div class="app-icon" aria-hidden="true">
+                <span class="app-icon-inner">🪑</span>
+              </div>
+              <h3 class="app-name">Quiet Bench</h3>
+              <p class="app-desc">A place to sit without being sold to. Rest as resistance.</p>
+              <div class="app-tags">
+                <span class="tag">iOS</span>
+                <span class="tag">rest</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ART ZONE — portfolio scatter -->
+        <section class="zone zone-art" id="zone-art" data-zone="art">
+          <div class="zone-marker" aria-hidden="true">06</div>
+          <h2 class="zone-title zone-title--scatter">Portfolio</h2>
+          <ul class="art-scatter" role="list">
+            <li class="art-piece art-piece--1 async-reveal" data-delay="0">
+              <span class="art-label">Photography</span>
+              <span class="art-title">Nature trails</span>
+            </li>
+            <li class="art-piece art-piece--2 async-reveal" data-delay="300">
+              <span class="art-label">Writing</span>
+              <span class="art-title">Am I Talking Now?</span>
+            </li>
+            <li class="art-piece art-piece--3 async-reveal" data-delay="600">
+              <span class="art-label">Technology</span>
+              <span class="art-title">Tick Talk · Quiet Bench</span>
+            </li>
+            <li class="art-piece art-piece--4 async-reveal" data-delay="900">
+              <span class="art-label">Art</span>
+              <span class="art-title">Attention containers</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Floating story fragments — async across viewport -->
+        <div class="story-fragments-layer" aria-hidden="true">
+          <span class="float-fragment float-1">save attention</span>
+          <span class="float-fragment float-2">contain it</span>
+          <span class="float-fragment float-3">saunter</span>
+          <span class="float-fragment float-4">listen</span>
+          <span class="float-fragment float-5">pause</span>
+          <span class="float-fragment float-6">wild edges</span>
+        </div>
+
+        <!-- Connector lines between zones (visual map) -->
+        <svg class="zone-connectors" aria-hidden="true" id="connectors">
+          <defs>
+            <pattern id="dash" patternUnits="userSpaceOnUse" width="8" height="1">
+              <line x1="0" y1="0" x2="8" y2="0" stroke="currentColor" stroke-width="1"/>
+            </pattern>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimap for spatial orientation -->
+  <div class="minimap" aria-label="Spatial map">
+    <div class="minimap-viewport" id="minimap-viewport"></div>
+    <ul class="minimap-dots" role="list">
+      <li><button type="button" class="minimap-dot" data-target="zone-origin" aria-label="Go to origin"></button></li>
+      <li><button type="button" class="minimap-dot" data-target="zone-bio" aria-label="Go to bio"></button></li>
+      <li><button type="button" class="minimap-dot" data-target="zone-gallery" aria-label="Go to gallery"></button></li>
+      <li><button type="button" class="minimap-dot" data-target="zone-writing" aria-label="Go to writing"></button></li>
+      <li><button type="button" class="minimap-dot" data-target="zone-apps" aria-label="Go to apps"></button></li>
+      <li><button type="button" class="minimap-dot" data-target="zone-art" aria-label="Go to art"></button></li>
+    </ul>
+  </div>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Roni Leibovitch</p>
+    <p class="footer-note">Wander freely. No tracking. No rush.</p>
+  </footer>
+
+  <script type="module" src="/scripts/main.js"></script>
+</body>
+</html>
