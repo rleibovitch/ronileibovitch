@@ -79,7 +79,7 @@ function setupPanDrag() {
   };
 
   viewport.addEventListener('mousedown', (e) => {
-    if (e.target.closest('a, button, input, .app-card')) return;
+    if (e.target.closest('a, button, input, .app-card, .gallery-album')) return;
     e.preventDefault();
     startDrag(e.clientX, e.clientY);
   });
@@ -88,7 +88,7 @@ function setupPanDrag() {
   window.addEventListener('mouseup', endDrag);
 
   viewport.addEventListener('touchstart', (e) => {
-    if (e.target.closest('a, button, input, .app-card')) return;
+    if (e.target.closest('a, button, input, .app-card, .gallery-album')) return;
     const touch = e.touches[0];
     startDrag(touch.clientX, touch.clientY);
   }, { passive: true });
@@ -252,26 +252,72 @@ function setFocusZone(zoneId) {
   });
 }
 
-/* ─── Gallery carousel ─── */
+/* ─── Gallery mini album ─── */
 function setupGallery() {
-  const slides = document.getElementById('gallery-slides');
+  const track = document.getElementById('gallery-track');
   const counter = document.getElementById('gallery-counter');
-  if (!slides) return;
+  const album = document.getElementById('gallery-album');
+  const dots = document.querySelectorAll('.gallery-dot');
+  if (!track) return;
 
-  const updateGallery = () => {
-    slides.style.transform = `translateX(-${state.galleryIndex * 100}%)`;
-    counter.textContent = `${state.galleryIndex + 1} / ${state.galleryTotal}`;
+  const goTo = (index) => {
+    state.galleryIndex = ((index % state.galleryTotal) + state.galleryTotal) % state.galleryTotal;
+    track.style.transform = `translateX(-${state.galleryIndex * 100}%)`;
+    if (counter) counter.textContent = `${state.galleryIndex + 1} / ${state.galleryTotal}`;
+    dots.forEach((dot, i) => {
+      const active = i === state.galleryIndex;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-selected', String(active));
+    });
   };
 
-  document.getElementById('gallery-prev')?.addEventListener('click', () => {
-    state.galleryIndex = (state.galleryIndex - 1 + state.galleryTotal) % state.galleryTotal;
-    updateGallery();
+  document.getElementById('gallery-prev')?.addEventListener('click', () => goTo(state.galleryIndex - 1));
+  document.getElementById('gallery-next')?.addEventListener('click', () => goTo(state.galleryIndex + 1));
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index, 10)));
   });
 
-  document.getElementById('gallery-next')?.addEventListener('click', () => {
-    state.galleryIndex = (state.galleryIndex + 1) % state.galleryTotal;
-    updateGallery();
+  if (!album) return;
+
+  let swipeStartX = 0;
+  let swiping = false;
+
+  const onSwipeStart = (clientX) => {
+    swipeStartX = clientX;
+    swiping = true;
+    album.classList.add('is-dragging');
+  };
+
+  const onSwipeEnd = (clientX) => {
+    if (!swiping) return;
+    const dx = clientX - swipeStartX;
+    if (Math.abs(dx) > 48) {
+      goTo(state.galleryIndex + (dx < 0 ? 1 : -1));
+    }
+    swiping = false;
+    album.classList.remove('is-dragging');
+  };
+
+  album.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    onSwipeStart(e.clientX);
   });
+
+  window.addEventListener('mouseup', (e) => {
+    if (swiping) onSwipeEnd(e.clientX);
+  });
+
+  album.addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+    onSwipeStart(e.touches[0].clientX);
+  }, { passive: true });
+
+  album.addEventListener('touchend', (e) => {
+    if (e.changedTouches[0]) onSwipeEnd(e.changedTouches[0].clientX);
+  }, { passive: true });
+
+  goTo(0);
 }
 
 /* ─── Async reveals — intersection-based storytelling ─── */

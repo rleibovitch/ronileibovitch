@@ -70,7 +70,7 @@
           </header>
           <p class="origin-invite async-reveal" data-delay="1400">
             This is not a scroll. It is a saunter.<br />
-            Drag anywhere · click nodes · wander.
+            Drag anywhere. Click and wander.
           </p>
           <div class="origin-compass async-reveal" data-delay="2000" aria-hidden="true">
             <span class="compass-arm compass-n">↑</span>
@@ -105,44 +105,47 @@
         <section class="zone zone-gallery" id="zone-gallery" data-zone="gallery">
           <div class="zone-marker" aria-hidden="true">03</div>
           <h2 class="zone-title zone-title--vertical">
-            <span class="vertical-text">Sauntering</span>
+            <span class="vertical-text">Saunter</span>
           </h2>
           <div class="gallery-card">
             <div class="gallery-frame">
-              <div class="gallery-slides" id="gallery-slides">
-                <div class="gallery-slide gallery-slide--active" style="--hue: 145">
-                  <div class="slide-placeholder" aria-hidden="true">
-                    <svg viewBox="0 0 400 300" class="nature-svg">
-                      <rect fill="var(--teal)" width="400" height="300"/>
-                      <path fill="var(--yellow)" d="M0 200 Q100 120 200 180 T400 140 L400 300 L0 300Z"/>
-                      <circle cx="320" cy="60" r="40" fill="var(--coral)" opacity="0.7"/>
-                      <text x="200" y="160" text-anchor="middle" fill="var(--navy)" font-family="IBM Plex Mono" font-size="14">Michigan trails</text>
-                    </svg>
-                  </div>
-                </div>
-                <div class="gallery-slide" style="--hue: 200">
-                  <div class="slide-placeholder" aria-hidden="true">
-                    <svg viewBox="0 0 400 300" class="nature-svg">
-                      <rect fill="var(--navy)" width="400" height="300"/>
-                      <ellipse cx="200" cy="250" rx="180" ry="40" fill="var(--teal)" opacity="0.5"/>
-                      <path fill="var(--cream)" d="M80 250 L120 100 L160 250 M200 250 L240 80 L280 250 M320 250 L350 130 L380 250" stroke="var(--yellow)" stroke-width="3" fill="none"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="gallery-slide" style="--hue: 30">
-                  <div class="slide-placeholder" aria-hidden="true">
-                    <svg viewBox="0 0 400 300" class="nature-svg">
-                      <rect fill="var(--yellow)" width="400" height="300"/>
-                      <rect x="50" y="180" width="300" height="8" fill="var(--navy)"/>
-                      <circle cx="100" cy="100" r="50" fill="var(--coral)" opacity="0.6"/>
-                      <circle cx="300" cy="80" r="30" fill="var(--teal)"/>
-                    </svg>
-                  </div>
+              <div class="gallery-album" id="gallery-album">
+                <div class="gallery-track" id="gallery-track">
+                  <figure class="gallery-slide">
+                    <img
+                      src="/images/michigan-trails.png"
+                      alt="Green meadow with yellow wildflowers and trees on a ridge under a blue sky — Michigan nature trail"
+                      class="gallery-photo"
+                      width="800"
+                      height="600"
+                      loading="eager"
+                    />
+                  </figure>
+                  <figure class="gallery-slide">
+                    <img
+                      src="/images/lake-superior-shore.png"
+                      alt="Colorful pebbles on the Lake Superior shore with clear water washing over the rocks"
+                      class="gallery-photo"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <figure class="gallery-slide">
+                    <img
+                      src="/images/pictured-rocks.png"
+                      alt="Sandstone cliffs and autumn trees above turquoise water at Pictured Rocks, Michigan"
+                      class="gallery-photo"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                    />
+                  </figure>
                 </div>
               </div>
             </div>
             <div class="gallery-meta">
-              <h3 class="gallery-title kinetic-wobble">Along Michigan Nature Trails</h3>
+              <h3 class="gallery-title kinetic-wobble">Saunter Along Michigan Nature Trails</h3>
               <p class="gallery-desc">A photographic saunter through Michigan's wild edges — light, bark, water, pause.</p>
               <a href="https://500px.com/p/leibovitch/galleries/sauntering-along-michigan-nature-trails" 
                  class="brutal-link brutal-link--external" 
@@ -151,9 +154,14 @@
                 View on 500px →
               </a>
               <div class="gallery-controls">
-                <button type="button" class="gallery-btn" id="gallery-prev" aria-label="Previous image">←</button>
-                <span class="gallery-counter" id="gallery-counter">1 / 3</span>
-                <button type="button" class="gallery-btn" id="gallery-next" aria-label="Next image">→</button>
+                <button type="button" class="gallery-btn" id="gallery-prev" aria-label="Previous photo">←</button>
+                <div class="gallery-dots" id="gallery-dots" role="tablist" aria-label="Gallery photos">
+                  <button type="button" class="gallery-dot is-active" data-index="0" aria-label="Photo 1" aria-selected="true"></button>
+                  <button type="button" class="gallery-dot" data-index="1" aria-label="Photo 2" aria-selected="false"></button>
+                  <button type="button" class="gallery-dot" data-index="2" aria-label="Photo 3" aria-selected="false"></button>
+                </div>
+                <span class="gallery-counter" id="gallery-counter" aria-live="polite">1 / 3</span>
+                <button type="button" class="gallery-btn" id="gallery-next" aria-label="Next photo">→</button>
               </div>
             </div>
           </div>
