@@ -316,9 +316,10 @@ body.is-dragging {
 
 .zone-apps {
   top: 1100px;
-  left: 700px;
+  left: 860px;
   width: 560px;
   transform: rotate(2deg);
+  padding-left: 2.5rem;
 }
 
 .zone-art {
@@ -1019,7 +1020,7 @@ body.calm-motion .kinetic-title--solo .kinetic-char {
   .zone-bio { left: 900px; width: 420px; }
   .zone-gallery { left: 150px; width: 500px; }
   .zone-writing { left: 800px; width: 400px; }
-  .zone-apps { left: 550px; width: 500px; }
+  .zone-apps { left: 720px; width: 500px; }
   .zone-art { left: 1200px; width: 360px; }
 }
 
@@ -1033,7 +1034,7 @@ body.calm-motion .kinetic-title--solo .kinetic-char {
   .zone-bio { top: 100px; left: 750px; }
   .zone-gallery { top: 600px; left: 100px; }
   .zone-writing { top: 500px; left: 650px; }
-  .zone-apps { top: 1050px; left: 400px; }
+  .zone-apps { top: 1050px; left: 560px; }
   .zone-art { top: 850px; left: 1000px; }
 
   .app-cards {
